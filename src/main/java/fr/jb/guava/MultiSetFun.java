@@ -2,6 +2,7 @@ package fr.jb.guava;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.ImmutableList;
@@ -14,11 +15,22 @@ public class MultiSetFun {
 		Multiset<Character> wordsMultiset = HashMultiset.<Character>create();
 		wordsMultiset.addAll(toList(words));
 		
-		
 		return wordsMultiset.count(l);
 	}
 	
-	protected List<Character> toList(String s){
+	public Set<Character> getLetters(String words){
+		Multiset<Character> wordsMultiset = HashMultiset.<Character>create();
+		wordsMultiset.addAll(toList(words));
+		return wordsMultiset.elementSet();
+	}
+	
+	public Object countLetters(String words) {
+		Multiset<Character> wordsMultiset = HashMultiset.<Character>create();
+		wordsMultiset.addAll(toList(words));
+		return wordsMultiset.size();
+	}
+	
+	private List<Character> toList(String s){
 		if (s == null){
 			return ImmutableList.of();
 		}
@@ -28,4 +40,6 @@ public class MultiSetFun {
 		}
 		return l;
 	}
+
+	
 }
