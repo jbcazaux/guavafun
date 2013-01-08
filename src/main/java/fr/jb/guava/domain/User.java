@@ -6,6 +6,9 @@ public class User {
 	private String email;
 	
 	public User(String login, String email){
+		if (login == null){
+			throw new IllegalArgumentException("login cannot be null");
+		}
 		this.login = login;
 		this.email = email;
 	}
